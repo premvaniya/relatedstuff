@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prem Vaniya - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            background: #1e1e1e;
+            color: #ff9800;
+            padding: 20px;
+            text-align: left;
+            font-size: 2em;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #1e1e1e;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-top: 60px; /* Add padding to the top of each section */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section h2 {
+            margin-bottom: 15px;
+            color: #ff9800;
+            border-bottom: 2px solid #ff9800;
+            padding-bottom: 5px;
+            font-size: 1.8em;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .section ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff9800;
+            font-size: 1.2em;
+        }
+        .section ul li span {
+            font-weight: bold;
+            color: #ff9800;
+        }
+        .section ul ul {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        .section ul ul li {
+            margin-bottom: 5px;
+        }
+        .toggle-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50; /* Changed background color */
+            color: #0f0101; /* Changed foreground color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+            z-index: 1002;
+        }
+        .card {
+            background: #2e2e2e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            background: #3e3e3e;
+        }
+        .prompt-card {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1e1e1e, #3e3e3e);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1001;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .prompt-card h3 {
+            margin: 10px 0;
+            color: #ff9800;
+            font-size: 2em;
+            text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+        }
+        .prompt-card p {
+            color: #e0e0e0;
+            font-size: 1.2em;
+        }
+        .background-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .background-effect div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 152, 0, 0.5);
+            border-radius: 50%;
+            animation: move 20s linear infinite;
+        }
+        @keyframes move {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(100vh) translateX(100vw);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>PREM VANIYA PORTFOLIO</header>
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+    <div class="container">
+        <div id="about-me" class="section card" onclick="createBalls()">
+            <h2>About Me</h2>
+            <p>Hello! I'm Prem Vaniya, a passionate and dedicated software developer with a strong focus on backend development using Spring Boot and Laravel. With a deep love for coding and problem-solving, I have honed my skills in creating robust, scalable, and efficient web applications. My journey in software development has been driven by curiosity and a commitment to continuous learning.</p>
+            <p>Throughout my academic and professional career, I have gained hands-on experience in both backend and frontend development. I am proficient in Java for backend development and adept at using HTML, CSS, JavaScript, and React for frontend tasks. My involvement with ECELL has further honed my abilities in project management, teamwork, and strategic planning.</p>
+            <p>I thrive on challenges and enjoy working on projects that push the boundaries of my knowledge and skills. Whether it's building RESTful APIs with Spring Boot or crafting elegant web solutions with Laravel, I am always eager to take on new opportunities and contribute to innovative projects. I am excited to leverage my full stack skills in a professional setting and make a meaningful impact in the tech industry.</p>
+        </div>
+
+        <div id="objective" class="section card" onclick="createBalls()">
+            <h2>Objective</h2>
+            <p>As a third-year Integrated Master of Science in IT student at Silver Oak University, with hands-on experience in both backend and frontend development, I am eager to leverage my full stack skills in a professional setting. Proficient in Java for backend development and adept at using HTML, CSS, JavaScript, and React for frontend tasks, I am well-equipped to handle comprehensive development projects. My involvement with ECELL has further honed my abilities in project management, teamwork, and strategic planning. I aim to contribute effectively to a dynamic team by applying innovative problem-solving and engaging communication skills to real-world challenges, with a particular focus on delivering impactful full stack solutions using Java and modern web technologies.</p>
+        </div>
+        
+        <div id="technical-skills" class="section card" onclick="createBalls()">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li><span>Java Backend:</span> Spring Boot, Servlet, JSP, Hibernate</li>
+                <li><span>Frontend Development:</span> HTML, CSS, JavaScript, React</li>
+                <li><span>Database Management:</span> MySQL, Postgres</li>
+                <li><span>Programming Languages:</span> Python, C, C++</li>
+            </ul>
+        </div>
+        
+        <div id="technical-tools" class="section card" onclick="createBalls()">
+            <h2>Technical Tools</h2>
+            <ul>
+                <li>AWS (Amazon Web Services)</li>
+                <li>Version Control (Git, GitHub)</li>
+                <li>RESTful APIs</li>
+                <li>Unit Testing and Debugging</li>
+            </ul>
+        </div>
+
+        <div id="non-technical-skills" class="section card" onclick="createBalls()">
+            <h2>Non-Technical Skills</h2>
+            <ul>
+                <li>Innovative Problem-Solving</li>
+                <li>Dynamic Team Collaboration</li>
+                <li>Adaptability</li>
+                <li>Engaging Communication</li>
+                <li>Strategic Planning</li>
+            </ul>
+        </div>
+        
+        <div id="professional-experience" class="section card" onclick="createBalls()">
+            <h2>Professional Experience</h2>
+            <ul>
+                <li><span>Freelance Developer</span> (June 2023 - Present)
+                    <ul>
+                        <li>Hotel Management System: Developed a comprehensive web application for hotel management using Java for backend and React for frontend, improving booking and management processes.</li>
+                        <li>Wiz Learns: Created an educational coding website named Wiz Learns using HTML, CSS, and JavaScript, designed to facilitate coding education and enhance user learning experiences.</li>
+                        <li>Small Projects: Built various smaller projects utilizing JavaScript, enhancing skills in frontend development and problem-solving.</li>
+                    </ul>
+                </li>
+                <li><span>Silver Oak University ECELL (Entrepreneurship Cell) Member</span> (August 2022 - Present)
+                    <ul>
+                        <li>Event Coordination: Organized and managed tech and entrepreneurship events, honing leadership and organizational skills.</li>
+                        <li>Workshops and Seminars: Assisted in planning and executing workshops on entrepreneurship and technology, gaining experience in public speaking and event management.</li>
+                        <li>Team Collaboration: Collaborated with a team to promote entrepreneurship on campus, demonstrating effective teamwork and strategic planning.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="academic-projects" class="section card" onclick="createBalls()">
+            <h2>Academic Projects</h2>
+            <ul>
+                <li><span>Capstone Project</span> (August 2023 - Present)
+                    <ul>
+                        <li>Web Application Development: Led a project to develop a web application using Java for backend and React for frontend, demonstrating strong project management and technical skills.</li>
+                    </ul>
+                </li>
+                <li><span>Coding Competitions:</span> Participated in coding challenges and hackathons, improving problem-solving skills and technical expertise.</li>
+            </ul>
+        </div>
+        
+        <div id="additional-experience" class="section card" onclick="createBalls()">
+            <h2>Additional Experience</h2>
+            <ul>
+                <li><span>Accenture UK Developer and Technology Virtual Experience Programme on Forage</span> (December 2024)
+                    <ul>
+                        <li>Completed the Developer and Technology Job Simulation, gaining an end-to-end understanding of the Software Development Lifecycle.</li>
+                        <li>Conducted in-depth research into emerging technology trends, particularly in the field of DevOps, demonstrating a proactive approach to staying informed about the rapidly evolving tech landscape.</li>
+                        <li>Created and delivered a compelling PowerPoint presentation analyzing and comparing Waterfall and Agile methodologies.</li>
+                        <li>Designed a custom algorithm using pseudocode and effectively communicated its logic by creating a detailed flow diagram.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div id="education" class="section card" onclick="createBalls()">
+            <h2>Education</h2>
+            <ul>
+                <li><span>Silver Oak College of Computer Application, Silver Oak University</span>
+                    <ul>
+                        <li>Integrated MSc-IT: August 2022 - August 2026</li>
+                    </ul>
+                </li>
+                <li><span>SSC, GSEB</span>
+                    <ul>
+                        <li>June 2020: 80.83%</li>
+                    </ul>
+                </li>
+                <li><span>HSC, GHSEB</span>
+                    <ul>
+                        <li>June 2022: 85.17%</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="prompt-card">
+        <h3>Welcome</h3>
+        <p>Thank you for coming here</p>
+    </div>
+
+    <div class="background-effect"></div>
+
+    <script>
+        let theme = 'dark';
+        const colors = ['#4CAF50', '#ff5722', '#2196F3', '#9C27B0', '#FFEB3B'];
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeButton = document.querySelector('.toggle-theme');
+            const cards = document.querySelectorAll('.card');
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            if (theme === 'dark') {
+                body.style.backgroundColor = '#ffffff';
+                body.style.color = '#333';
+                themeButton.style.backgroundColor = randomColor; // New background color
+                themeButton.style.color = '#FFFFFF'; // New foreground color
+                cards.forEach(card => card.style.backgroundColor = '#ffffff');
+                cards.forEach(card => card.style.color = '#333');
+                theme = 'light';
+            } else {
+                body.style.backgroundColor = '#121212';
+                body.style.color = '#e0e0e0';
+                themeButton.style.backgroundColor = randomColor; // Changed background color
+                themeButton.style.color = '#FFFFFF'; // Changed foreground color
+                cards.forEach(card => card.style.backgroundColor = '#2e2e2e');
+                cards.forEach(card => card.style.color = '#e0e0e0');
+                theme = 'dark';
+            }
+        }
+
+        window.onload = function() {
+            const promptCard = document.querySelector('.prompt-card');
+            promptCard.style.display = 'block';
+            setTimeout(() => {
+                promptCard.style.display = 'none';
+            }, 2000);
+
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        const backgroundEffect = document.querySelector('.background-effect');
+        for (let i = 0; i < 20; i++) {
+            const div = document.createElement('div');
+            div.style.top = `${Math.random() * 100}%`;
+            div.style.left = `${Math.random() * 100}%`;
+            div.style.background = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`;
+            div.style.animationDuration = `${Math.random() * 20 + 10}s`;
+            div.style.animationName = `move${i}`;
+            backgroundEffect.appendChild(div);
+
+            const keyframes = `
+                @keyframes move${i} {
+                    0% {
+                        transform: translateY(0) translateX(0);
+                    }
+                    100% {
+                        transform: translateY(${Math.random() * 100 - 50}vh) translateX(${Math.random() * 100 - 50}vw);
+                    }
+                }
+            `;
+            const styleSheet = document.createElement("style");
+            styleSheet.type = "text/css";
+            styleSheet.innerText = keyframes;
+            document.head.appendChild(styleSheet);
+        }
+
+        function createBalls() {
+            for (let i = 0; i < 10; i++) {
+                const div = document.createElement('div');
+                div.style.top = `${Math.random() * 100}%`;
+                div.style.left = `${Math.random() * 100}%`;
+                div.style.background = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`;
+                div.style.width = '20px';
+                div.style.height = '20px';
+                div.style.borderRadius = '50%';
+                div.style.position = 'absolute';
+                div.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                div.style.animationName = `moveBall${i}`;
+                backgroundEffect.appendChild(div);
+
+                const keyframes = `
+                    @keyframes moveBall${i} {
+                        0% {
+                            transform: translateY(0) translateX(0);
+                        }
+                        100% {
+                            transform: translateY(${Math.random() * 100 - 50}vh) translateX(${Math.random() * 100 - 50}vw);
+                        }
+                    }
+                `;
+                const styleSheet = document.createElement("style");
+                styleSheet.type = "text/css";
+                styleSheet.innerText = keyframes;
+                document.head.appendChild(styleSheet);
+            }
+        }
+    </script>
+</body>
+</html>
